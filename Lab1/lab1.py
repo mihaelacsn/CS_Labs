@@ -23,7 +23,7 @@ def main():
     input_text = ""
     output_text = ""
     second_key = ""
-    operation = input("Choose an operation:\n [e] Encrypt\n [d] Decrypt\n [m] Two Keys\n [n] Decrypt Two Keys\n")
+    operation = input("Choose an operation:\n [e] Encrypt\n [d] Decrypt\n [e2] Two Keys\n [d2] Decrypt Two Keys\n")
     input_text = input("Enter the text to process:\n")
     shift_key = int(input("Enter the shift key:\n"))
     
@@ -45,7 +45,7 @@ def main():
                 elif custom_alphabet[i] == input_text[j].lower():
                     output_text = output_text[:j] + custom_alphabet[(26 + i - shift_key) % 26].upper() + output_text[j + 1:]
     
-    elif operation == 'm':
+    elif operation == 'e2':
         second_key = input("Enter the second key:\n")
         combined_key = second_key + cipher_key
         cipher_key = remove_duplicate(combined_key)
@@ -59,7 +59,7 @@ def main():
                 elif custom_alphabet[i] == input_text[j].lower():
                     output_text = output_text[:j] + cipher_key[(i + shift_key) % 26].upper() + output_text[j + 1:]
     
-    elif operation == 'n':
+    elif operation == 'd2':
         second_key = input("Enter the second key:\n")
         combined_key = second_key + cipher_key
         cipher_key = remove_duplicate(combined_key)
