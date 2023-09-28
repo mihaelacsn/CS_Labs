@@ -1,19 +1,18 @@
 def get_string(x):
     return x
-
-def remove_duplicate(input_str):
-    result = input_str[0]
-    is_duplicate = False
+def remove_duplicate(input_string):
+    # Initialize an empty string to store the result
+    result = ""
     
-    for i in range(1, len(input_str)):
-        for j in range(len(result)):
-            if input_str[i] == result[j]:
-                is_duplicate = True
-        
-        if not is_duplicate:
-            result += input_str[i]
-        else:
-            is_duplicate = False
+    # Create a set to keep track of seen characters
+    seen = set()
+    
+    # Iterate through the input string
+    for char in input_string:
+        # If the character is not in the set of seen characters, add it to the result
+        if char not in seen:
+            result += char
+            seen.add(char)
     
     return result
 
@@ -23,10 +22,9 @@ def main():
     input_text = ""
     output_text = ""
     second_key = ""
-    operation = input("Choose an operation:\n [e] Encrypt\n [d] Decrypt\n [e2] Two Keys\n [d2] Decrypt Two Keys\n")
+    operation = input("Choose your fighter:\n [e] Encryptor\n [d] Decryptor\n [x] Encryptor Two Keys\n [y] Decryptor Two Keys\n")
     input_text = input("Enter the text to process:\n")
     shift_key = int(input("Enter the shift key:\n"))
-    
     output_text = input_text
     
     if operation == 'e':
@@ -45,7 +43,7 @@ def main():
                 elif custom_alphabet[i] == input_text[j].lower():
                     output_text = output_text[:j] + custom_alphabet[(26 + i - shift_key) % 26].upper() + output_text[j + 1:]
     
-    elif operation == 'e2':
+    elif operation == 'x':
         second_key = input("Enter the second key:\n")
         combined_key = second_key + cipher_key
         cipher_key = remove_duplicate(combined_key)
@@ -59,7 +57,7 @@ def main():
                 elif custom_alphabet[i] == input_text[j].lower():
                     output_text = output_text[:j] + cipher_key[(i + shift_key) % 26].upper() + output_text[j + 1:]
     
-    elif operation == 'd2':
+    elif operation == 'y':
         second_key = input("Enter the second key:\n")
         combined_key = second_key + cipher_key
         cipher_key = remove_duplicate(combined_key)
