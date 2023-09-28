@@ -1,15 +1,11 @@
 def get_string(x):
     return x
 def remove_duplicate(input_string):
-    # Initialize an empty string to store the result
     result = ""
-    
-    # Create a set to keep track of seen characters
+
     seen = set()
-    
-    # Iterate through the input string
+   
     for char in input_string:
-        # If the character is not in the set of seen characters, add it to the result
         if char not in seen:
             result += char
             seen.add(char)
