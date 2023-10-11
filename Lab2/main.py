@@ -13,11 +13,11 @@ def removeSpaces(text):
 def Diagraph(text):
     Diagraph = []
     group = 0
-    for i in range(1, len(text), 2):  # Fix the range to include all characters
-        Diagraph.append(text[group:i+2])  # Include two characters in the diagraph
+    for i in range(1, len(text), 2): 
+        Diagraph.append(text[group:i+2])  
         group = i+1
-    if group < len(text):  # Check if there's a single character left
-        Diagraph.append(text[group] + 'x')  # Add 'x' to form a diagraph
+    if group < len(text):  
+        Diagraph.append(text[group] + 'x')  
     return Diagraph
 
 
@@ -70,7 +70,7 @@ def search(mat, element):
         for j in range(len(mat[i])):
             if mat[i][j] == element:
                 return i, j
-    return None, None  # Element not found in the matrix
+    return None, None  
 
 
 def encrypt_RowRule(matr, e1r, e1c, e2r, e2c):
@@ -210,7 +210,7 @@ def main():
         return
 
     text_Plain = removeSpaces(toUpperCase(text_Plain))
-    text_Plain = FillerLetter(text_Plain)  # Apply FillerLetter separately
+    text_Plain = FillerLetter(text_Plain)  
     PlainTextList = Diagraph(text_Plain)
 
     key = input("Enter the key: ")
